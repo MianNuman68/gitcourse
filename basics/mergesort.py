@@ -1,6 +1,4 @@
-
 def debug_print(debug_msg=None, **kwargs):
-
     if debug_msg:
         print(debug_msg)
 
@@ -38,15 +36,18 @@ def merge(left, right):
 
 
 if __name__ == "__main__":
-    input_str = input("Enter numbers, separated by ',': ")
-    input_list = input_str.split(",")
-    value_list = []
-    for x in input_list:
-        try:
-            value_list.append(int(x))
-        except ValueError as err:
-            print("Invalid input.")
-            quit(1)
+    try:
+        # Prompt user for input
+        input_str = input("Enter numbers, separated by ',': ")
 
-    sorted_list = mergesort(value_list)
-    print(sorted_list)
+        # Process input and handle invalid input
+        input_list = [int(x) for x in input_str.split(",")]
+
+        # Call mergesort function
+        sorted_list = mergesort(input_list)
+
+        # Print the sorted list
+        print(sorted_list)
+    except ValueError as err:
+        # Handle invalid input (non-integer values)
+        print("Invalid input. Please enter integers separated by commas.")
